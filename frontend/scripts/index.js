@@ -69,6 +69,5 @@ const loadGameScreen = () => {
     const mainDiv = document.getElementById("main-div")
     mainDiv.className = "hidden"
     gameDiv.className = "container"
-    let player = new Game(currentUser)
-    player.test()
+    let player = new GameSession(currentUser)
 }
