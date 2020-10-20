@@ -1,11 +1,20 @@
-class Game {
+class GameSession {
     constructor(player) {
         this.player = player
+    }
+}
+
+let canvas = document.getElementById("game-canvas")
+let ctx = canvas.getContext("2d")
+
+class Game {
+    constructor() {
         this.score = 0
     }
-    test = () => {
-        ++this.score
-        console.log(this.player, this.score)
-    }
-    
 }
+
+let startBtn = document.getElementById("start-game")
+startBtn.addEventListener("click", (e) => {
+    let gameInstance = new Game()
+    console.log(gameInstance.score)
+})

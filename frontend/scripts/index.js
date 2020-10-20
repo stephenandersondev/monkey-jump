@@ -75,11 +75,11 @@ const renderPersScores = (games) => {
 }
 
 const mainDiv = document.getElementById("main-div")
+
 const loadGameScreen = () => {
     mainDiv.className = "hidden"
     gameDiv.className = "container-fadein"
-    let player = new Game(currentUser)
-    player.test()
+    let player = new GameSession(currentUser)
 }
 
 const logout = document.getElementById("logout-button")
