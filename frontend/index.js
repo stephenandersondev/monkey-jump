@@ -48,6 +48,3 @@ const userLogin = (user) => {
 const renderPersScores = (games) => {
     games.forEach(game => console.log(game.score))
 }
-
-
-

@@ -58,12 +58,20 @@ h3 {
     visibility: hidden;
 }
 
-li {
+#score-div {
+    column-count: 2;
+    border: 85px solid transparent;
+    padding: 15px;
+    border-image: url("assets/img/pnghut_bamboo-picture-frame-stairs-japanese-decorative-hand-painted-cartoon-bamboo-border_UHt35zWJ2b.png") 20% round;
+  }
+
+#score-li {
+    background-color: rgba(255,255,255,0.0);
     text-align: center;
     font-family: "Monkey Phonics";
     font-weight: normal;
     font-style: normal;
     color: yellow;
-    font-size: 20px;
-    opacity: 100%
+    font-size: 32px;
+    opacity: 100%;
 }
