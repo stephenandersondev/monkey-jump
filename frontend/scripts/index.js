@@ -59,7 +59,6 @@ const renderPersScores = (games) => {
        score.innerText = game.score
        score.className = "list-group-item"
        playerUl.append(score)
-       console.log(gameDiv)
     })
 }
 
@@ -67,4 +66,6 @@ const loadGameScreen = () => {
     const mainDiv = document.getElementById("main-div")
     mainDiv.className = "hidden"
     gameDiv.className = "container"
+    let player = new Game(currentUser)
+    player.test()
 }
