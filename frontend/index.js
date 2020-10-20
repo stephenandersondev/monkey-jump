@@ -34,7 +34,7 @@ loginForm.addEventListener("submit", (e) => {
             "Accept": "application/json"
         },
         body: JSON.stringify({
-            username: user
+        username: user
         })
     })
         .then(res => res.json())

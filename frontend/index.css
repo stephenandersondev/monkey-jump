@@ -25,24 +25,29 @@ html {
     src: url("assets/fonts/COMICATE.TTF");
 }
 
+@font-face {
+    font-family: "Arcade";
+    src: url("assets/fonts/04B_30__.TTF");
+}
+
 h1 {
     text-align: center;
     font-family: "Hanalei";
     font-weight: normal;
     font-style: normal;
     color: yellow;
-    font-size: 150px;
+    font-size: 100px;
     animation: shake 1.5s;
     animation-iteration-count: infinite;
 }
 
 h3 {
     text-align: center;
-    font-family: "Hanalei";
+    font-family: "Hanaleii";
     font-weight: normal;
     font-style: normal;
     color: yellow;
-    font-size: 80px;
+    font-size: 50px;
 }
   
   @keyframes shake {
@@ -65,18 +70,28 @@ h3 {
 
 #score-div {
     column-count: 2;
-    border: 85px solid transparent;
+    border: 65px solid;
     border-image: url("assets/img/clipart598102.png") 20% round;
   }
 
 .list-group-item {
     background-color: rgba(255,255,255,0.0);
     text-align: center;
-    font-family: "Monkey Phonics";
+    font-family: "Arcade";
     font-weight: normal;
     font-style: normal;
     color: yellow;
     /* -webkit-text-stroke: 1px white; */
     font-size: 2vw;
     opacity: 100%;
+}
+
+form {
+    margin: 0 auto;
+    width: 25%;
+    text-align: center; 
+}
+
+input {
+    text-align: center;
 }
