@@ -1,4 +1,6 @@
 const baseURL = "http://localhost:3000/"
+const clean = "border:0px solid white;padding: 20px 0px 0px 20px;" 
+
 fetch(baseURL)
     .then(res => res.json())
     .then(games => {
@@ -15,7 +17,7 @@ let renderLeaderboard = (item) => {
     itemLi.className = "list-group-item"
     itemLi.innerText = `${item.player.username.toUpperCase()}\u00A0${item.score}`
     itemLi.id = "score-li"
-    itemLi.style = "border:0px solid white;padding: 20px 0px 0px 20px;"
+    itemLi.style = clean
     if (leaderUl.childElementCount < 5) {
         leaderUl.append(itemLi)
     } else {
@@ -45,30 +47,44 @@ loginForm.addEventListener("submit", (e) => {
         })
 })
 
-const userLogin = (user) => {
-    currentUser = user.username
-}
-
 const gameDiv = document.querySelector("#game-div")
-const userPanel = document.querySelector("#pers-score-list")
+const userPanel = document.querySelector("#user-panel")
 const playerUl = document.querySelector("#pers-scores")
-userPanel.append(playerUl)
+const name = document.createElement('h5')
+name.className = "list-group-item"
+name.style = clean
+userPanel.append(name, playerUl)
 gameDiv.append(userPanel)
 
+const userLogin = (user) => {
+    currentUser = user.username
+    name.innerHTML = `${currentUser}'s Top 5:`
+}
+
 const renderPersScores = (games) => {
+    while (playerUl.firstChild) {
+        playerUl.removeChild(playerUl.firstChild)
+    }
     games.forEach(game => {
        let score = document.createElement("li")
-       score.style = "border:0px solid white;padding: 20px 0px 0px 20px;"
+       score.style = clean
        score.innerText = game.score
        score.className = "list-group-item"
        playerUl.append(score)
     })
 }
 
+const mainDiv = document.getElementById("main-div")
 const loadGameScreen = () => {
-    const mainDiv = document.getElementById("main-div")
     mainDiv.className = "hidden"
-    gameDiv.className = "container"
+    gameDiv.className = "container-fadein"
     let player = new Game(currentUser)
     player.test()
 }
+
+const logout = document.getElementById("logout-button")
+logout.addEventListener("click", (e) => {
+    e.preventDefault()
+    mainDiv.className = "container-fadein"
+    gameDiv.className = "hidden"
+})
