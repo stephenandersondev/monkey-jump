@@ -50,16 +50,18 @@ const userLogin = (user) => {
 }
 
 const gameDiv = document.querySelector("#game-div")
+const userPanel = document.querySelector("#pers-score-list")
 const playerUl = document.querySelector("#pers-scores")
-gameDiv.append(playerUl)
+userPanel.append(playerUl)
+gameDiv.append(userPanel)
 
 const renderPersScores = (games) => {
     games.forEach(game => {
        let score = document.createElement("li")
+       score.style = "border:0px solid white;padding: 20px 0px 0px 20px;"
        score.innerText = game.score
        score.className = "list-group-item"
        playerUl.append(score)
-       console.log(gameDiv)
     })
 }
 
@@ -67,4 +69,5 @@ const loadGameScreen = () => {
     const mainDiv = document.getElementById("main-div")
     mainDiv.className = "hidden"
     gameDiv.className = "container"
+    // document.body.style.backgroundImage = "url('assets/img/—Pngtree—dark green ordinary wallpaper_1218994.jpg')"
 }
