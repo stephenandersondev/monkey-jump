@@ -7,4 +7,5 @@ class Game {
         ++this.score
         console.log(this.player, this.score)
     }
+    
 }
