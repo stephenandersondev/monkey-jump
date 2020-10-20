@@ -17,4 +17,5 @@ let startBtn = document.getElementById("start-game")
 startBtn.addEventListener("click", (e) => {
     let gameInstance = new Game()
     console.log(gameInstance.score)
+    console.log('Ive been clicked')
 })
