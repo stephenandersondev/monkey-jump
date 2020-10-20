@@ -69,6 +69,5 @@ const loadGameScreen = () => {
     const mainDiv = document.getElementById("main-div")
     mainDiv.className = "hidden"
     gameDiv.className = "container"
-    let player = new Game(currentUser)
-    player.test()
+    // document.body.style.backgroundImage = "url('assets/img/—Pngtree—dark green ordinary wallpaper_1218994.jpg')"
 }
