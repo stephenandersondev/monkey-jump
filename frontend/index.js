@@ -7,15 +7,20 @@ fetch(baseURL)
 
 let scoreDiv = document.querySelector("#score-div")
 let leaderUl = document.querySelector("#score-list")
-scoreDiv.append(leaderUl)
+let leaderUl2 = document.querySelector("#score-list2")
+scoreDiv.append(leaderUl, leaderUl2)
 
 let renderLeaderboard = (item) => {
     let itemLi = document.createElement("li")
     itemLi.className = "list-group-item"
-    itemLi.innerText = `${item.player.username}\u00A0\u00A0${item.score}`
+    itemLi.innerText = `${item.player.username.toUpperCase()}\u00A0${item.score}`
     itemLi.id = "score-li"
     itemLi.style = "border:0px solid white;padding: 20px 0px 0px 20px;"
-    leaderUl.append(itemLi)
+    if (leaderUl.childElementCount < 5) {
+        leaderUl.append(itemLi)
+    } else {
+        leaderUl2.append(itemLi)
+    }
 }
 
 const loginForm = document.getElementById("login-form")
