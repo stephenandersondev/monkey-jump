@@ -65,15 +65,40 @@ h3 {
     100% { transform: translate(1px, -2px) rotate(-1deg); }
   }
 
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        height: 0px;
+    }
+}
 .hidden {
-    display: none;
+    animation: fade-out 1.5s;
+    opacity: 0;
+    height: 0;
 }
 
 #score-div {
     column-count: 2;
     border: 65px solid;
     border-image: url("assets/img/clipart598102.png") 20% round;
-  }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.container-fadein {
+    opacity: 0;
+    animation: fade-in 3s;
+    opacity: 1;
+}
 
 .list-group-item {
     background-color: rgba(255,255,255,0.0);
@@ -101,4 +126,19 @@ canvas {
     background: #eee; 
     display: block; 
     margin: 0 auto; 
+}
+
+#user-panel {
+    position: fixed;
+    right: 0px;
+    top: 80px;
+    background-color: rgb(13, 216, 13, 0.5);
+    height: 372px;
+    width: 157px;
+}
+
+#logout-button {
+    position: fixed;
+    left: 35px;
+    bottom: 25px; 
 }
