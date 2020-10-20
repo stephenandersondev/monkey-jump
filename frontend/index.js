@@ -41,14 +41,30 @@ loginForm.addEventListener("submit", (e) => {
         .then(user_data => {
             userLogin(user_data.username)
             renderPersScores(user_data.scores)
+            loadGameScreen()
         })
 })
 
 const userLogin = (user) => {
     currentUser = user.username
-    console.log(currentUser)
 }
 
+const gameDiv = document.querySelector("#game-div")
+const playerUl = document.querySelector("#pers-scores")
+gameDiv.append(playerUl)
+
 const renderPersScores = (games) => {
-    games.forEach(game => console.log(game.score))
+    games.forEach(game => {
+       let score = document.createElement("li")
+       score.innerText = game.score
+       score.className = "list-group-item"
+       playerUl.append(score)
+       console.log(gameDiv)
+    })
+}
+
+const loadGameScreen = () => {
+    const mainDiv = document.getElementById("main-div")
+    mainDiv.className = "hidden"
+    gameDiv.className = "container"
 }
