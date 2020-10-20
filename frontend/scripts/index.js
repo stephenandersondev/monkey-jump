@@ -50,12 +50,15 @@ const userLogin = (user) => {
 }
 
 const gameDiv = document.querySelector("#game-div")
+const userPanel = document.querySelector("#pers-score-list")
 const playerUl = document.querySelector("#pers-scores")
-gameDiv.append(playerUl)
+userPanel.append(playerUl)
+gameDiv.append(userPanel)
 
 const renderPersScores = (games) => {
     games.forEach(game => {
        let score = document.createElement("li")
+       score.style = "border:0px solid white;padding: 20px 0px 0px 20px;"
        score.innerText = game.score
        score.className = "list-group-item"
        playerUl.append(score)
