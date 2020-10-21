@@ -15,8 +15,7 @@
 </head>
 
 <body>
-    <!-- change to class of container -->
-    <div id="main-div" class="hidden"><h1>Monkey Climber</h1><br></br><br>
+    <div id="main-div" class="container"><h1>Monkey Climber</h1><br></br><br>
         <div id="login" class="container">
             <h3>Login</h3>
             <form id="login-form">
@@ -40,18 +39,14 @@
             </div>
         </div>
     </div>
-<!-- change back to hidden -->
-    <div id="game-div" class="container">
+    <div id="game-div" class="hidden">
         <h4 id="game-title">Monkey Climber</h4>
-        <div id="game-container" class="container">
             <div class="grid">
             </div>
-            <p class="display-3" id="start-game">Start</p>
-        </div>
-        <div id="user-panel" class="container">
-            <ul id="pers-scores" class="list-group">
-            </ul>
-        </div>
+                <div id="user-panel">
+                    <ul id="pers-scores" class="list-group">
+                    </ul>
+                </div>
         <button id="logout-button" style="background-color: yellow; color: darkgreen;" class="btn btn-warning">Logout</button>
     </div>
 </body>
