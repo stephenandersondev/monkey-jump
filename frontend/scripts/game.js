@@ -179,7 +179,7 @@ function moveLeft() {
     isGoingLeft = true
     leftTimerId = setInterval(function () {
         if (doodlerLeftSpace >= 0) {
-        doodlerLeftSpace -=5
+        doodlerLeftSpace -= 4
         doodler.style.left = doodlerLeftSpace + 'px'
         } else moveRight()
     },20)
@@ -193,7 +193,7 @@ function moveRight() {
     isGoingRight = true
     rightTimerId = setInterval(function () {
         if (doodlerLeftSpace <= (gridWidth - doodlerWidth)) {
-            doodlerLeftSpace += 5
+            doodlerLeftSpace += 4
             doodler.style.left = doodlerLeftSpace + 'px'
         } else moveLeft()
     },20)
@@ -212,13 +212,12 @@ function start() {
         createDoodler()
         setInterval(movePlatforms, 30)
         jump()
-        document.addEventListener('keyup', control)
+        document.addEventListener('keydown', control)
 }
 
 
 function saveGame(player, score) {
-    console.log(player, score)
-    fetch("http://localhost:3000/games/", {
+    fetch("http://localhost:3000/games", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
