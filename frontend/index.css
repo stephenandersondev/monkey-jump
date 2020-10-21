@@ -149,7 +149,7 @@ canvas {
 }
 
 #logout-button {
-    position: relative;
+    position: fixed;
     left: 35px;
     bottom: 25px; 
 }
