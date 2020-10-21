@@ -79,6 +79,8 @@ const mainDiv = document.getElementById("main-div")
 const loadGameScreen = () => {
     mainDiv.className = "hidden"
     gameDiv.className = "container-fadein"
+    // const startBtn = getElementById("start-game")
+    // startBtn.className = "display-3"
     let player = new GameSession(currentUser)
 }
 
