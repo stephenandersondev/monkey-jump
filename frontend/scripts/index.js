@@ -46,7 +46,6 @@ loginForm.addEventListener("submit", (e) => {
             loadGameScreen()
         })
 })
-
 const gameDiv = document.querySelector("#game-div")
 const userPanel = document.querySelector("#user-panel")
 const playerUl = document.querySelector("#pers-scores")
@@ -79,7 +78,7 @@ const mainDiv = document.getElementById("main-div")
 const loadGameScreen = () => {
     mainDiv.className = "hidden"
     gameDiv.className = "container-fadein"
-    let player = new GameSession(currentUser)
+    getUser(currentUser)
 }
 
 const logout = document.getElementById("logout-button")

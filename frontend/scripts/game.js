@@ -4,7 +4,13 @@ class GameSession {
     }
 }
 
+
 const grid = document.querySelector(".grid")
+let currentUser
+
+function getUser(user) {
+    currentUser = user
+}
 
 function startButton() {
     let startBtn = document.createElement("div")
@@ -39,6 +45,19 @@ let isGoingRight = false
 let leftTimerId
 let rightTimerId
 let score = 0
+
+function gameReset() {
+    grid.innerHTML = ""
+    score = 0
+    platforms = []
+    doodlerLeftSpace = 50
+    startPoint = 150
+    doodlerBottomSpace = startPoint
+    platformCount = 8
+    isJumping = true
+    isGoingLeft = false
+    isGoingRight = false
+}
 
 function createDoodler() {
     grid.appendChild(doodler)
@@ -85,7 +104,6 @@ function movePlatforms() {
                 firstPlatform.classList.remove("platform")
                 platforms.shift()
                 score += 100
-                // will need to change
                 let newPlatform = new Platform(gridHeight)
                 platforms.push(newPlatform)
             }
@@ -125,6 +143,8 @@ function gameOver() {
     clearInterval(downTimerId)
     clearInterval(leftTimerId)
     clearInterval(rightTimerId)
+    clearInterval(movePlatforms)
+    saveGame(currentUser, score)
     grid.innerHTML = score
     startButton()
 }
@@ -187,10 +207,26 @@ function moveStraight() {
 }
 
 function start() {
-        console.log("I'm clicked")
+        gameReset()
         createPlatforms()
         createDoodler()
         setInterval(movePlatforms, 30)
         jump()
         document.addEventListener('keyup', control)
+}
+
+
+function saveGame(player, score) {
+    console.log(player, score)
+    fetch("http://localhost:3000/games/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            username: player,
+            score: score
+        })
+    })
 }
