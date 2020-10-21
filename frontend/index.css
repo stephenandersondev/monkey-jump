@@ -122,14 +122,29 @@ input {
     text-align: center;
 }
 
-canvas { 
-    background: #eee; 
-    display: block; 
-    margin: 0 auto;
-    border: 10px solid;
-    border-color: rgb(32, 112, 0);
-    outline: 2px solid black;
+.grid {
+    width: 800px;
+    height: 1000px;
+    background-color: yellow;
+    position: relative;
+    font-size: 100px;
+    text-align: center;
 }
+
+.doodler {
+    width: 60px;
+    height: 85px;
+    background-color: red;
+    position: absolute;
+}
+
+.platform {
+    width: 125px;
+    height: 30px;
+    background-color: green;
+    position: absolute;
+}
+
 
 #user-panel {
     position: fixed;
