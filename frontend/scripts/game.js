@@ -15,13 +15,14 @@ class Game {
         this.score = 0
     }
 }
-
+let monkey
 let startBtn = document.getElementById("start-game")
 startBtn.addEventListener("click", (e) => {
-    let gameInstance = new Game()
-    let monkey = new Monkey(GAME_WIDTH, GAME_HEIGHT)
-    let inputHandlerInstance = new InputHandler(monkey)
+    monkey = new Monkey(GAME_WIDTH, GAME_HEIGHT)
     monkey.draw(ctx)
+    let gameInstance = new Game()
+    let inputHandlerInstance = new InputHandler(monkey)
+    // startBtn.className = "hidden"
 })
 
 let loop = (timestamp) => {
@@ -61,7 +62,7 @@ class Monkey {
             x: gameWidth / 2 - this.image.width / 2,
             y: gameHeight - this.image.height - 10
         }
-        this.maxSpeed = 10
+        this.maxSpeed = 7
         this.speed = 0
     }
 
@@ -71,10 +72,12 @@ class Monkey {
 
     moveLeft = () => {
         this.speed = -this.maxSpeed
+        console.log('Im trying to move left')
     }
 
     moveRight = () => {
         this.speed = this.maxSpeed
+        console.log('Im trying to move right')
     }
 
     update = (dt) => {
