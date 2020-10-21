@@ -4,15 +4,24 @@ class GameSession {
     }
 }
 
-let startBtn = document.getElementById("start-game")
-startBtn.addEventListener("click", (e) => {
-    start()
-})
-
 const grid = document.querySelector(".grid")
+
+function startButton() {
+    let startBtn = document.createElement("div")
+    startBtn.className = "display-3"
+    startBtn.innerHTML = "Start"
+    startBtn.addEventListener("click", (e) => {
+        start()
+        startBtn.className = "remove"
+    })
+    grid.append(startBtn)
+}
+
+startButton()
+
 const doodler = document.createElement("div")
 const gridWidth = 800
-const gridHeight = 1000
+const gridHeight = 850
 const doodlerWidth = 60
 const doodlerHeight = 85
 const platformWidth = 125
@@ -20,7 +29,6 @@ const platformHeight = 30
 let doodlerLeftSpace = 50
 let startPoint = 150
 let doodlerBottomSpace = startPoint
-let isGameOver = false
 let platformCount = 8
 let platforms = []
 let upTimerId
@@ -110,15 +118,15 @@ function fall() {
 }
 
 function gameOver() {
-    isGameOver = true
     while (grid.firstChild) {
         grid.removeChild(grid.firstChild)
     }
-    grid.innerHTML = score
     clearInterval(upTimerId)
     clearInterval(downTimerId)
     clearInterval(leftTimerId)
     clearInterval(rightTimerId)
+    grid.innerHTML = score
+    startButton()
 }
 
 function jump() {
@@ -179,13 +187,10 @@ function moveStraight() {
 }
 
 function start() {
-    if (!isGameOver) {
+        console.log("I'm clicked")
         createPlatforms()
         createDoodler()
         setInterval(movePlatforms, 30)
         jump()
         document.addEventListener('keyup', control)
-    }
 }
-
-start()

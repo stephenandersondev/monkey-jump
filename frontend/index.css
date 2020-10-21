@@ -80,6 +80,10 @@ h3 {
     height: 0;
 }
 
+.remove {
+    display: none;
+}
+
 #score-div {
     column-count: 2;
     border: 65px solid;
@@ -98,6 +102,8 @@ h3 {
     opacity: 0;
     animation: fade-in 3s;
     opacity: 1;
+    width: 57.25%;
+    margin: auto;
 }
 
 .list-group-item {
@@ -124,11 +130,16 @@ input {
 
 .grid {
     width: 800px;
-    height: 1000px;
-    background-color: yellow;
-    position: relative;
+    height: 850px;
+    background-color: rgb(113, 210, 255);
+    float: left;
     font-size: 100px;
     text-align: center;
+    /* padding-left: 200px; */
+    border: 10px solid;
+    border-color: rgb(32, 112, 0);
+    outline: 1px solid black;
+    position: relative;
 }
 
 .doodler {
@@ -145,12 +156,13 @@ input {
     position: absolute;
 }
 
-
 #user-panel {
-    position: fixed;
-    right: 0px;
-    top: 100px;
-    height: 58vh;
+    /* position: fixed; */
+    float: right;
+    /* flex-grow: 1; */
+    /* right: 200px;
+    top: 100px; */
+    height: 86.9vh;
     width: 15.5vw;
     background: url("assets/img/20580939.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -158,7 +170,7 @@ input {
     -o-background-size: cover;
     background-size: cover;
     opacity: .80;
-    border: 5px solid;
+    border: 10px solid;
     border-color: rgb(32, 112, 0);
     outline: 1px solid black;
 }
@@ -182,7 +194,6 @@ input {
 }
 
 .display-3 {
-    position: absolute;
     font-size: 100px;
     z-index: 9998!important;
     font-family: "Hanalei";
@@ -190,12 +201,10 @@ input {
     font-style: normal;
     color: yellow;
     -webkit-text-stroke: 1px yellow;
-    left: 41vw;
-    top: 50vh;
+    padding-right: 32px;
+    padding-top: 350px;
 }
 
-p:hover {
+.display-3:hover {
     font-size:130px;
-    transition: all 500ms;
-    font-size-adjust: 20px;
 }
