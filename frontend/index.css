@@ -138,7 +138,7 @@ h3 {
     list-style-image: url('assets/img/banana.png');
     color: yellow;
     /* -webkit-text-stroke: 1px white; */
-    font-size: 2vw;
+    font-size: 1.5vw;
     opacity: 100%;
     text-shadow: 3px 3px 3px black;
     overflow: hidden;
