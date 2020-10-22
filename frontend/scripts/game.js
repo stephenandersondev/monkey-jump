@@ -4,7 +4,6 @@ class GameSession {
     }
 }
 
-
 const grid = document.querySelector(".grid")
 let currentUser
 
@@ -27,7 +26,8 @@ startButton()
 
 const doodler = document.createElement("div")
 const gridWidth = 800
-const gridHeight = 850
+//made 50px shorter here because game was not contained on screen
+const gridHeight = 800
 const doodlerWidth = 60
 const doodlerHeight = 85
 const platformWidth = 125
@@ -45,6 +45,7 @@ let isGoingRight = false
 let leftTimerId
 let rightTimerId
 let score = 0
+let platInterval
 
 function gameReset() {
     grid.innerHTML = ""
@@ -143,7 +144,7 @@ function gameOver() {
     clearInterval(downTimerId)
     clearInterval(leftTimerId)
     clearInterval(rightTimerId)
-    clearInterval(movePlatforms)
+    clearInterval(platInterval)
     saveGame(currentUser, score)
     grid.innerHTML = score
     startButton()
@@ -210,7 +211,7 @@ function start() {
         gameReset()
         createPlatforms()
         createDoodler()
-        setInterval(movePlatforms, 30)
+        platInterval = setInterval(movePlatforms, 30)
         jump()
         document.addEventListener('keydown', control)
 }
