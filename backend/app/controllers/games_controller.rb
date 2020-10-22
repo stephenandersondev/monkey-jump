@@ -7,5 +7,7 @@ class GamesController < ApplicationController
   def create
     user = Player.find_by(username: params[:username])
     Game.create(player_id: user.id, score: params[:score])
+    scores = user.top_five
+    render json: scores
   end
 end
