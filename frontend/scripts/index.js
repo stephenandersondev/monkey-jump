@@ -29,6 +29,8 @@ loginForm.addEventListener("submit", (e) => {
     e.preventDefault()
     let monkeyScream = new SoundEffect("assets/sound/monkey-scream-low.mp3")
     monkeyScream.play()
+    backMusic = new SoundMusic("assets/sound/tarzan-music.mp3")
+    setTimeout(function(){backMusic.play()}, 2100)
     let user = document.getElementById("username").value
     fetch(baseURL + "players", {
         method: "POST",
@@ -37,7 +39,7 @@ loginForm.addEventListener("submit", (e) => {
             "Accept": "application/json"
         },
         body: JSON.stringify({
-        username: user
+            username: user
         })
     })
         .then(res => res.json())
@@ -66,4 +68,5 @@ logout.addEventListener("click", (e) => {
     e.preventDefault()
     mainDiv.className = "container-fadein"
     gameDiv.className = "hidden"
+    backMusic.stop()
 })
