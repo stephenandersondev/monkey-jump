@@ -1,14 +1,9 @@
-class GameSession {
-    constructor(player) {
-        this.player = player
-    }
-}
-
 const grid = document.querySelector(".grid")
-let currentUser
+let currentPlayer
+let backMusic
 
 function getUser(user) {
-    currentUser = user
+    currentPlayer = user
 }
 
 function startButton() {
@@ -46,6 +41,30 @@ let leftTimerId
 let rightTimerId
 let score = 0
 let platInterval
+
+
+const clean = "border:0px solid white;padding: 20px 0px 0px 20px;"
+const gameDiv = document.querySelector("#game-div")
+const userPanel = document.querySelector("#user-panel")
+const playerUl = document.querySelector("#pers-scores")
+const name = document.createElement('h5')
+name.className = "list-group-item"
+name.style = clean
+userPanel.append(name, playerUl)
+gameDiv.append(userPanel)
+
+const renderPersScores = (games) => {
+    while (playerUl.firstChild) {
+        playerUl.removeChild(playerUl.firstChild)
+    }
+    games.forEach(game => {
+       let score = document.createElement("li")
+       score.style = clean
+       score.innerText = game.score
+       score.className = "list-group-item"
+       playerUl.append(score)
+    })
+}
 
 function gameReset() {
     grid.innerHTML = ""
@@ -145,7 +164,10 @@ function gameOver() {
     clearInterval(leftTimerId)
     clearInterval(rightTimerId)
     clearInterval(platInterval)
-    saveGame(currentUser, score)
+    backMusic.stop()
+    let gameOverSound = new SoundEffect("assets/sound/game-over-sound.mp3")
+    gameOverSound.play()
+    saveGame(currentPlayer.username, score)
     grid.innerHTML = score
     startButton()
 }
@@ -153,6 +175,8 @@ function gameOver() {
 function jump() {
     clearInterval(downTimerId)
     isJumping = true 
+    jumpSound = new SoundEffect("assets/sound/BounceYoFrankie.flac")
+    jumpSound.play()
     upTimerId = setInterval(function () {
         doodlerBottomSpace += 20
         doodler.style.bottom = doodlerBottomSpace + 'px'
@@ -209,6 +233,8 @@ function moveStraight() {
 
 function start() {
         gameReset()
+        backMusic = new SoundMusic("assets/sound/tarzan-music.mp3")
+        backMusic.play()
         createPlatforms()
         createDoodler()
         platInterval = setInterval(movePlatforms, 30)
@@ -229,4 +255,49 @@ function saveGame(player, score) {
             score: score
         })
     })
+    .then(res => res.json())
+    .then(games => renderPersScores(games))
 }
+
+class SoundEffect {
+    constructor(src) {
+        this.src = src
+        this.sound = document.createElement("audio")
+        this.sound.src = this.src
+        this.sound.setAttribute("preload", "auto")
+        this.sound.setAttribute("controls", "none")
+        this.sound.style.display = "none"
+        document.body.appendChild(this.sound)
+    }
+    
+    play() {
+      this.sound.play()
+    }
+
+    stop() {
+      this.sound.pause();
+    }
+
+  }
+
+  class SoundMusic {
+    constructor(src) {
+        this.src = src
+        this.sound = document.createElement("audio")
+        this.sound.src = this.src
+        this.sound.setAttribute("preload", "auto")
+        this.sound.setAttribute("controls", "none")
+        this.sound.setAttribute("loop", "loop")
+        this.sound.style.display = "none"
+        document.body.appendChild(this.sound)
+    }
+    
+    play() {
+      this.sound.play()
+    }
+
+    stop() {
+      this.sound.pause();
+    }
+
+  }

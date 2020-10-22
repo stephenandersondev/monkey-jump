@@ -191,7 +191,8 @@ input {
 }
 
 #user-panel {
-    float: right;
+    position: fixed;
+    display: inline-block;
     height: 850px;
     width: 15.5vw;
     background: url("assets/img/20580939.jpg");
