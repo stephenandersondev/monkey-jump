@@ -29,6 +29,11 @@ html {
     src: url("assets/fonts/04B_30__.TTF");
 }
 
+@font-face {
+    font-family: "Score";
+    src: url("assets/fonts/04B_19__.TTF");
+}
+
 h1 {
     text-align: center;
     font-family: "Hanalei";
@@ -39,6 +44,7 @@ h1 {
     animation: shake 1.5s;
     animation-iteration-count: infinite;
     -webkit-text-stroke: 2px yellow;
+    text-shadow:5px 5px 5px black;
 }
 
 h3 {
@@ -49,6 +55,7 @@ h3 {
     color: yellow;
     font-size: 50px;
     -webkit-text-stroke: 1px yellow;
+    text-shadow: 3px 3px 3px black;
 }
   
   @keyframes shake {
@@ -78,6 +85,10 @@ h3 {
     animation: fade-out 1.5s;
     opacity: 0;
     height: 0;
+}
+
+#submit {
+    box-shadow: 1px 1px 1px 1px black;
 }
 
 .remove {
@@ -116,6 +127,7 @@ h3 {
     /* -webkit-text-stroke: 1px white; */
     font-size: 2vw;
     opacity: 100%;
+    text-shadow: 3px 3px 3px black;
 }
 
 form {
@@ -145,11 +157,13 @@ input {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    /* background: url("assets/img/20580939.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover; */
+    box-shadow: inset 2px 2px 2px 2px black;
+    font-family: "Score";
+    font-weight: normal;
+    font-style: normal;
+    color: yellow;
+    opacity: 100%;
+    text-shadow: 4px 4px 4px black;
 }
 
 .doodler {
@@ -178,28 +192,27 @@ input {
 }
 
 #user-panel {
-    /* position: fixed; */
     float: right;
-    /* flex-grow: 1; */
-    /* right: 200px;
-    top: 100px; */
-    height: 86.9vh;
+    height: 850px;
     width: 15.5vw;
-    background: url("assets/img/20580939.jpg") no-repeat center center fixed;
+    background: url("assets/img/20580939.jpg");
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    opacity: .80;
+    opacity: 1;
     border: 10px solid;
     border-color: rgb(32, 112, 0);
     outline: 1px solid black;
+    box-shadow: inset 2px 2px 2px 2px black;
+    text-shadow:5px 5px 5px black;
 }
 
 #logout-button {
     position: fixed;
     left: 35px;
     bottom: 25px; 
+    box-shadow: 2px 2px 2px 2px black;
 }
 
 #game-title {
@@ -212,6 +225,7 @@ input {
     color: yellow;
     font-size: 35px;
     -webkit-text-stroke: 1px yellow;
+    text-shadow:5px 5px 5px black;
 }
 
 .display-3 {
@@ -222,8 +236,10 @@ input {
     font-style: normal;
     color: yellow;
     -webkit-text-stroke: 2px yellow;
-    padding-right: 32px;
+    /* padding-right: 32px; */
     padding-top: 350px;
+    text-align: center;
+    text-shadow:5px 5px 5px black;
 }
 
 .display-3:hover {
