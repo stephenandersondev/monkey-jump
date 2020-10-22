@@ -51,7 +51,7 @@ loginForm.addEventListener("submit", (e) => {
 const userLogin = (user) => {
     getUser(user)
     currentUser = user.username
-    name.innerHTML = `${currentUser}'s Top 5:`
+    name.innerHTML = `${currentUser}'s <br/> Top 5:`
 }
 
 const mainDiv = document.getElementById("main-div")
