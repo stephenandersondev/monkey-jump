@@ -48,7 +48,7 @@ const gameDiv = document.querySelector("#game-div")
 const userPanel = document.querySelector("#user-panel")
 const playerUl = document.querySelector("#pers-scores")
 const name = document.createElement('h5')
-name.className = "list-group-item"
+name.className = "top-five-heading"
 name.style = clean
 userPanel.append(name, playerUl)
 gameDiv.append(userPanel)
@@ -167,6 +167,7 @@ function gameOver() {
     backMusic.stop()
     let gameOverSound = new SoundEffect("assets/sound/game-over-sound.mp3")
     gameOverSound.play()
+    setTimeout(function(){backMusic.play()},1550)
     saveGame(currentPlayer.username, score)
     grid.innerHTML = score
     startButton()
@@ -233,8 +234,6 @@ function moveStraight() {
 
 function start() {
         gameReset()
-        backMusic = new SoundMusic("assets/sound/tarzan-music.mp3")
-        backMusic.play()
         createPlatforms()
         createDoodler()
         platInterval = setInterval(movePlatforms, 30)
