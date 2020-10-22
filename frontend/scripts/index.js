@@ -1,8 +1,17 @@
 const baseURL = "http://localhost:3000/"
-
+let scoreDiv = document.querySelector("#score-div")
+let leaderUl = document.querySelector("#score-list")
+let leaderUl2 = document.querySelector("#score-list2")
+scoreDiv.append(leaderUl, leaderUl2)
 
 
 function fetchLeaderboard() {
+    while (leaderUl.firstChild) {
+        leaderUl.removeChild(leaderUl.firstChild)
+    }
+    while (leaderUl2.firstChild) {
+        leaderUl2.removeChild(leaderUl2.firstChild)
+    }
     fetch(baseURL)
         .then(res => res.json())
         .then(games => {
@@ -11,11 +20,7 @@ function fetchLeaderboard() {
 }
 
 fetchLeaderboard()
-
-let scoreDiv = document.querySelector("#score-div")
-let leaderUl = document.querySelector("#score-list")
-let leaderUl2 = document.querySelector("#score-list2")
-scoreDiv.append(leaderUl, leaderUl2)
+let backMusicDelay
 
 let renderLeaderboard = (item) => {
     let itemLi = document.createElement("li")
@@ -33,10 +38,11 @@ let renderLeaderboard = (item) => {
 const loginForm = document.getElementById("login-form")
 loginForm.addEventListener("submit", (e) => {
     e.preventDefault()
+    backMusic = new SoundMusic("assets/sound/tarzan-music.mp3")
     let monkeyScream = new SoundEffect("assets/sound/monkey-scream-low.mp3")
     monkeyScream.play()
-    backMusic = new SoundMusic("assets/sound/tarzan-music.mp3")
-    setTimeout(function () { backMusic.play() }, 2100)
+    backMusicDelay = setTimeout(function () { backMusic.play() }, 2100)
+    createLogoutDelay = setTimeout(function(){createLogout()}, 2200)
     let user = document.getElementById("username").value
     fetch(baseURL + "players", {
         method: "POST",
@@ -69,17 +75,19 @@ const loadGameScreen = () => {
     gameDiv.className = "container-fadein"
 }
 
+function createLogout() {
 const logout = document.getElementById("logout-button")
 logout.addEventListener("click", (e) => {
     e.preventDefault()
-    while (leaderUl.childElementCount > 0) {
-        leaderUl.removeChild(leaderUl.firstChild)
-    }
-    while (leaderUl2.childElementCount > 0) {
-        leaderUl2.removeChild(leaderUl2.firstChild)
-    }
     fetchLeaderboard()
-    mainDiv.className = "container-fadein"
-    gameDiv.className = "hidden"
+    loadMainScreen()
+    clearInterval(backMusicDelay)
+    clearInterval(createLogoutDelay)
     backMusic.stop()
 })
+}
+
+const loadMainScreen = () => {
+    gameDiv.className = "hide"
+    mainDiv.className = "container-fadein"
+}

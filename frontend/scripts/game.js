@@ -77,12 +77,15 @@ function gameReset() {
     isJumping = true
     isGoingLeft = false
     isGoingRight = false
+    clearInterval(upTimerId)
+    clearInterval(downTimerId)
+    clearInterval(leftTimerId)
+    clearInterval(rightTimerId)
 }
 
 function createDoodler() {
     grid.appendChild(doodler)
     doodler.classList.add('doodler')
-    //start doodler on first platform left
     doodlerLeftSpace = platforms[0].left
     doodler.style.left = doodlerLeftSpace + 'px'
     doodler.style.bottom = doodlerBottomSpace + 'px'
@@ -91,7 +94,6 @@ function createDoodler() {
 class Platform {
     constructor(newPlatBottom) {
         this.bottom = newPlatBottom
-        //change this when changing width of game
         this.left = Math.random() * (gridWidth - platformWidth)
         this.visual = document.createElement("div")
         const visual = this.visual
@@ -104,7 +106,6 @@ class Platform {
 
 function createPlatforms() {
     for (let i = 0; i < platformCount; i++) {
-        // will change when resizing platform
         let platformGap = gridHeight / platformCount
         let newPlatBottom = 100 + i * platformGap
         let newPlatform = new Platform(newPlatBottom)
@@ -118,7 +119,6 @@ function movePlatforms() {
             platform.bottom -= 4
             let visual = platform.visual
             visual.style.bottom = platform.bottom + 'px'
-
             if (platform.bottom < 10) {
                 let firstPlatform = platforms[0].visual
                 firstPlatform.classList.remove("platform")
@@ -132,8 +132,8 @@ function movePlatforms() {
 }
 
 function fall() {
-    clearInterval(upTimerId)
     isJumping = false
+    clearInterval(upTimerId)
     downTimerId = setInterval(function () {
         doodlerBottomSpace -= 5
         doodler.style.bottom = doodlerBottomSpace + 'px'
@@ -150,9 +150,10 @@ function fall() {
             ) {
                 startPoint = doodlerBottomSpace
                 jump()
+                isJumping = true
             }
         })
-    },30)
+    },20)
 }
 
 function gameOver() {
@@ -183,17 +184,19 @@ function jump() {
         doodler.style.bottom = doodlerBottomSpace + 'px'
         if (doodlerBottomSpace > startPoint + 200) {
             fall()
+            isJumping = false
         }
     },30)
 }
 
 function control(e) {
+    doodler.style.bottom = doodlerBottomSpace + 'px'
     if(e.key === "ArrowLeft") {
         moveLeft()
     } else if (e.key === "ArrowRight") {
         moveRight()
-    } else if (e.key === "ArrowUp") {
-          
+    } else if (e.key === "ArrowUp") { 
+        moveStraight()   
     }
 }
 
