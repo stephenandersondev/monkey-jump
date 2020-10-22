@@ -1,5 +1,5 @@
 const baseURL = "http://localhost:3000/"
-const clean = "border:0px solid white;padding: 20px 0px 0px 20px;" 
+const clean = "border:0px solid white;padding: 20px 0px 0px 20px;"
 
 fetch(baseURL)
     .then(res => res.json())
@@ -50,14 +50,15 @@ const gameDiv = document.querySelector("#game-div")
 const userPanel = document.querySelector("#user-panel")
 const playerUl = document.querySelector("#pers-scores")
 const name = document.createElement('h5')
-name.className = "list-group-item"
+// name.className = "list-group-item"
+name.className = "top-five-heading"
 name.style = clean
 userPanel.append(name, playerUl)
 gameDiv.append(userPanel)
 
 const userLogin = (user) => {
     currentUser = user.username
-    name.innerHTML = `${currentUser}'s Top 5:`
+    name.innerHTML = `${currentUser}'s <br/> Top 5:`
 }
 
 const renderPersScores = (games) => {
