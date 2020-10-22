@@ -1,10 +1,16 @@
 const baseURL = "http://localhost:3000/"
 
-fetch(baseURL)
-    .then(res => res.json())
-    .then(games => {
-        games.forEach(game => renderLeaderboard(game))
-    })
+
+
+function fetchLeaderboard() {
+    fetch(baseURL)
+        .then(res => res.json())
+        .then(games => {
+            games.forEach(game => renderLeaderboard(game))
+        })
+}
+
+fetchLeaderboard()
 
 let scoreDiv = document.querySelector("#score-div")
 let leaderUl = document.querySelector("#score-list")
@@ -30,7 +36,7 @@ loginForm.addEventListener("submit", (e) => {
     let monkeyScream = new SoundEffect("assets/sound/monkey-scream-low.mp3")
     monkeyScream.play()
     backMusic = new SoundMusic("assets/sound/tarzan-music.mp3")
-    setTimeout(function(){backMusic.play()}, 2100)
+    setTimeout(function () { backMusic.play() }, 2100)
     let user = document.getElementById("username").value
     fetch(baseURL + "players", {
         method: "POST",
@@ -66,6 +72,13 @@ const loadGameScreen = () => {
 const logout = document.getElementById("logout-button")
 logout.addEventListener("click", (e) => {
     e.preventDefault()
+    while (leaderUl.childElementCount > 0) {
+        leaderUl.removeChild(leaderUl.firstChild)
+    }
+    while (leaderUl2.childElementCount > 0) {
+        leaderUl2.removeChild(leaderUl2.firstChild)
+    }
+    fetchLeaderboard()
     mainDiv.className = "container-fadein"
     gameDiv.className = "hidden"
     backMusic.stop()
