@@ -48,7 +48,7 @@ const gameDiv = document.querySelector("#game-div")
 const userPanel = document.querySelector("#user-panel")
 const playerUl = document.querySelector("#pers-scores")
 const name = document.createElement('h5')
-name.className = "list-group-item"
+name.className = "top-five-heading"
 name.style = clean
 userPanel.append(name, playerUl)
 gameDiv.append(userPanel)
