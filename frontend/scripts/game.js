@@ -121,7 +121,8 @@ function movePlatforms() {
             visual.style.bottom = platform.bottom + 'px'
             if (platform.bottom < 10) {
                 let firstPlatform = platforms[0].visual
-                firstPlatform.classList.remove("platform")
+                // firstPlatform.classList.remove("platform")
+                firstPlatform.remove()
                 platforms.shift()
                 score += 100
                 let newPlatform = new Platform(gridHeight)
@@ -156,10 +157,15 @@ function fall() {
     },20)
 }
 
-function gameOver() {
+function cleanGrid() {
     while (grid.firstChild) {
         grid.removeChild(grid.firstChild)
     }
+}
+
+function gameOver() {
+    cleanGrid()
+    console.log(grid)
     clearInterval(upTimerId)
     clearInterval(downTimerId)
     clearInterval(leftTimerId)
@@ -179,6 +185,7 @@ function jump() {
     isJumping = true 
     jumpSound = new SoundEffect("assets/sound/BounceYoFrankie.flac")
     jumpSound.play()
+    delete jumpSound
     upTimerId = setInterval(function () {
         doodlerBottomSpace += 20
         doodler.style.bottom = doodlerBottomSpace + 'px'
