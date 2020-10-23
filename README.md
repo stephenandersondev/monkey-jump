@@ -1,6 +1,6 @@
 Monkey Jump App 
 ========================
-
+![monkey-jump-gameplay](https://github.com/stephenandersondev/monkey-jump-app/blob/main/frontend/assets/img/readme-img/gameplay.gif?raw=true)
 ## About
 
 Welcome to the Monkey Jump app! This app was developed by Stephen Anderson (@stephenandersondev) and Devin Davis (@devindavis5) as part of week 9 of the Flatiron School Software Engineering program.
