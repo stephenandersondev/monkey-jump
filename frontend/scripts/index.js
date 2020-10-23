@@ -45,7 +45,7 @@ loginForm.addEventListener("submit", (e) => {
     let monkeyScream = new SoundEffect("assets/sound/monkey-scream-low.mp3")
     monkeyScream.play()
     backMusicDelay = setTimeout(function () { backMusic.play() }, 2100)
-    let user = document.getElementById("username").value
+    let user = document.getElementById("username").value.toUpperCase()
     fetch(baseURL + "players", {
         method: "POST",
         headers: {
