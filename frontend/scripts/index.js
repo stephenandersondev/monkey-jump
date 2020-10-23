@@ -4,14 +4,17 @@ let leaderUl = document.querySelector("#score-list")
 let leaderUl2 = document.querySelector("#score-list2")
 scoreDiv.append(leaderUl, leaderUl2)
 
-
-function fetchLeaderboard() {
-    while (leaderUl.firstChild) {
+function clearLeaderboard() {
+     while (leaderUl.firstChild) {
         leaderUl.removeChild(leaderUl.firstChild)
     }
     while (leaderUl2.firstChild) {
         leaderUl2.removeChild(leaderUl2.firstChild)
     }
+}
+
+function fetchLeaderboard() {
+    clearLeaderboard()
     fetch(baseURL)
         .then(res => res.json())
         .then(games => {
@@ -42,7 +45,6 @@ loginForm.addEventListener("submit", (e) => {
     let monkeyScream = new SoundEffect("assets/sound/monkey-scream-low.mp3")
     monkeyScream.play()
     backMusicDelay = setTimeout(function () { backMusic.play() }, 2100)
-    createLogoutDelay = setTimeout(function(){createLogout()}, 2200)
     let user = document.getElementById("username").value
     fetch(baseURL + "players", {
         method: "POST",
@@ -75,17 +77,14 @@ const loadGameScreen = () => {
     gameDiv.className = "container-fadein"
 }
 
-function createLogout() {
 const logout = document.getElementById("logout-button")
 logout.addEventListener("click", (e) => {
     e.preventDefault()
     fetchLeaderboard()
     loadMainScreen()
-    clearInterval(backMusicDelay)
-    clearInterval(createLogoutDelay)
+    clearTimeout(backMusicDelay)
     backMusic.stop()
 })
-}
 
 const loadMainScreen = () => {
     gameDiv.className = "hide"
