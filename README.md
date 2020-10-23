@@ -1,26 +1,41 @@
-# README
+Monkey Jump App 
+========================
+![monkey-jump-gameplay](https://github.com/stephenandersondev/monkey-jump-app/blob/main/frontend/assets/img/readme-img/gameplay.gif?raw=true)
+## About
 
-I UPDATED THIS
+Welcome to the Monkey Jump app! This app was developed by Stephen Anderson (@stephenandersondev) and Devin Davis (@devindavis5) as part of week 9 of the Flatiron School Software Engineering program.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation
 
-Things you may want to cover:
+**1.** Fork and Clone this repository.
 
-* Ruby version
+**2.** Navigate to the backend directory and run bundle install to install necessary gems:
+```bash
+$ bundle install
+```
+**3.** Migrate the database:
+```bash
+$ rails db:migrate
+```
+**4.** Start the rails server:
+```bash
+$ rails s
+```
+**5.** You're now all set! To run the app, navigate to the frontend directory and open the html file: 
+```bash
+$ open index.html
+```
+## Usage
+You should now be brought to the login screen. Enter your desired username and login! 
 
-* System dependencies
+![monkey-jump-login](https://github.com/stephenandersondev/monkey-jump-app/blob/main/frontend/assets/img/readme-img/login.gif?raw=true)
 
-* Configuration
+After logging in you will see the game screen and user panel which will show your top 5 scores. Press 'START' to begin the game and use the arrow keys to move the monkey left, right, or straight ahead.
 
-* Database creation
+The game is over when the monkey falls. Your score is based on how many platforms you pass, and will be displayed to you after the game is over. 
 
-* Database initialization
+ ![monkey-jump-gameplay](https://github.com/stephenandersondev/monkey-jump-app/blob/main/frontend/assets/img/readme-img/gameplay.gif?raw=true)
 
-* How to run the test suite
+Feel free to play the game as many times as you like. If you get into the top 10 scores on your database your name will be displayed on the homepage!
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+We hope you enjoy playing Monkey Jump! 😊
