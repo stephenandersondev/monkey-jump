@@ -1,4 +1,4 @@
-Monkey Jump App 
+Monkey Jump
 ========================
 ![monkey-jump-gameplay](https://github.com/stephenandersondev/monkey-jump-app/blob/main/frontend/assets/img/readme-img/gameplay.gif?raw=true)
 ## About
